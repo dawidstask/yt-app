@@ -16,7 +16,7 @@ export default {
 
 <style lang="stylus">
 body
-  background-color lightgray
+  background-color #F9F9F9
 #app
   font-family 'Avenir', Helvetica, Arial, sans-serif
   -webkit-font-smoothing antialiased

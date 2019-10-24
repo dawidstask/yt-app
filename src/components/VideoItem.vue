@@ -15,7 +15,6 @@ export default {
 <style lang="stylus" scoped>
   div
     height: 100%
-    background-color: white
   p
     font-size: 1em
     font-weight: bold

@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <div class="items">
-      <div
-        v-for="video in videos"
-        :key="video.id.videoId">
-        <VideoItem :video="video" />
-      </div>
+  <div class="items">
+    <div
+      v-for="video in videos"
+      :key="video.id.videoId">
+      <VideoItem :video="video" />
     </div>
   </div>
 </template>
@@ -28,6 +26,7 @@ export default {
 </script>
 <style lang="stylus" scoped>
   .items
+    margin-top: 2em
     display: grid
     align-items: center
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr))
