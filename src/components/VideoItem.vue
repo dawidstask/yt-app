@@ -15,8 +15,13 @@ export default {
 <style lang="stylus" scoped>
   div
     height: 100%
+    display: flex
+    flex-direction: column
+    justify-content space-between
   p
     font-size: 1em
     font-weight: bold
     margin: 0
+  img
+    align-self: center
 </style>

@@ -28,9 +28,11 @@ export default {
   .items
     margin-top: 2em
     display: grid
-    align-items: center
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr))
-    grid-gap: 0.5em
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))
+    justify-items: center;
+    grid-template-rows: auto;
+    grid-gap: 3em
   .items > div
     height: 100%
+    width: 320px
 </style>
