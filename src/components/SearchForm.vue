@@ -41,5 +41,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="stylus" scoped>
+  input
+    width: 300px
+    height: 30px
+    margin: 10px
+    border: 1px solid lightgrey
+    border-radius: 20px
+    padding-left: 20px
+    &:focus
+      outline: none
 </style>
