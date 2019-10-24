@@ -12,10 +12,17 @@
       <button
         @click="parseSearchString"
         type="button"
+        class="search"
       >
         Search
       </button>
-      <button @click="reset">Reset</button>
+      <button
+        @click="reset"
+        type="button"
+        class="reset"
+      >
+        Reset
+      </button>
     </div>
   </form>
 </template>
@@ -47,8 +54,24 @@ export default {
     height: 30px
     margin: 10px
     border: 1px solid lightgrey
-    border-radius: 20px
-    padding-left: 20px
+    border-radius: 3px
+    padding-left: 10px
+  button
+    height: 25px
+    width: 70px
+    margin: 0 5px
+    color: white
+    border-radius: 3px
+    cursor: pointer
+    &.search
+      background-color: #3CBCE1
+      border: none
+      border-bottom: 3px solid #15A7D0
+    &.reset
+      background-color: #F2664F
+      border: none
+      border-bottom: 3px solid #DD5441
+  input, button
     &:focus
       outline: none
 </style>
