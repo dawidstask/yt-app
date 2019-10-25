@@ -10,18 +10,18 @@
 
     <div>
       <button
-        @click="parseSearchString"
-        type="button"
-        class="search"
-      >
-        Search
-      </button>
-      <button
         @click="reset"
         type="button"
         class="reset"
       >
         Reset
+      </button>
+      <button
+        @click="parseSearchString"
+        type="button"
+        class="search"
+      >
+        Search
       </button>
     </div>
   </form>

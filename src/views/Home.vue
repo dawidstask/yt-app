@@ -43,7 +43,7 @@ export default {
         part: 'snippet',
         type: 'video',
         order: 'viewCount',
-        maxResults: 8,
+        maxResults: 10,
         q: '',
         key: 'AIzaSyC2Wa9Q5QCOHiL-aZ5yBn6CNVorYkJzXFg',
         prevPageToken: '',
