@@ -1,7 +1,10 @@
 <template>
   <div>
-    <p>{{ video.snippet.title }}</p>
-    <img :src="video.snippet.thumbnails.medium.url" :alt="video.snippet.title">
+    <router-link :to="{ name: 'video', params: { id: video.id.videoId }}">
+      <p>{{ video.snippet.title }}</p>
+      {{video.id.videoId}}
+      <img :src="video.snippet.thumbnails.medium.url" :alt="video.snippet.title">
+    </router-link>
   </div>
 </template>
 
