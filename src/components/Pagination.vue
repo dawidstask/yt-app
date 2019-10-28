@@ -22,7 +22,14 @@
 <script>
 export default {
   name: 'Pagination',
-  props: ['prevPageToken', 'nextPageToken'],
+  props: {
+    prevPageToken: {
+      type: String,
+    },
+    nextPageToken: {
+      type: String,
+    },
+  },
   methods: {
     prevPage() {
       this.$emit('prev-page');

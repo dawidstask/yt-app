@@ -2,7 +2,6 @@
   <div>
     <router-link :to="{ name: 'video', params: { id: video.id.videoId }}">
       <p>{{ video.snippet.title }}</p>
-      {{video.id.videoId}}
       <img :src="video.snippet.thumbnails.medium.url" :alt="video.snippet.title">
     </router-link>
   </div>
@@ -11,7 +10,12 @@
 <script>
 export default {
   name: 'VideoItem',
-  props: ['video'],
+  props: {
+    video: {
+      type: Object,
+      required: true,
+    },
+  },
 };
 </script>
 

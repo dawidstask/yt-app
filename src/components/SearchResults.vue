@@ -13,6 +13,12 @@ import VideoItem from './VideoItem.vue';
 
 export default {
   name: 'SearchResults',
+  props: {
+    videos: {
+      type: Object,
+      required: true,
+    },
+  },
   components: {
     VideoItem,
   },
@@ -21,7 +27,6 @@ export default {
       title: 'Search Results',
     };
   },
-  props: ['videos'],
 };
 </script>
 <style lang="stylus" scoped>
