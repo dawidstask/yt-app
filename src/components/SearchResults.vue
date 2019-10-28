@@ -15,7 +15,7 @@ export default {
   name: 'SearchResults',
   props: {
     videos: {
-      type: Object,
+      type: Array,
       required: true,
     },
   },

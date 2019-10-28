@@ -4,7 +4,7 @@
 <!--    <HelloWorld msg="Welcome to Your Vue.js App"/>-->
 
     <Header/>
-    <SearchForm v-on:search="search"/>
+    <SearchForm @search="search"/>
     <SearchResults
       v-if="videos.length > 0"
       :videos="videos"
