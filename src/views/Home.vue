@@ -1,16 +1,15 @@
 <template>
   <div class="home">
 <!--    <img alt="Vue logo" src="../assets/logo.png">-->
-<!--    <HelloWorld msg="Welcome to Your Vue.js App"/>-->
 
     <Header/>
     <SearchForm @search="search"/>
     <SearchResults
-      v-if="videos.length > 0"
+      v-if="videos.length"
       :videos="videos"
     />
     <Pagination
-      v-if="videos.length > 0"
+      v-if="videos.length"
       :prevPageToken="api.prevPageToken"
       :nextPageToken="api.nextPageToken"
       @prev-page="prevPage"
@@ -51,7 +50,17 @@ export default {
       },
     };
   },
+  created() {
+    this.firstSearch();
+  },
   methods: {
+    firstSearch() {
+      const {
+        baseUrl, part, type, order, maxResults, key,
+      } = this.api;
+      const apiUrl = `${baseUrl}part=${part}&type=${type}&order=${order}&maxResults=${maxResults}&key=${key}`;
+      this.getData(apiUrl);
+    },
     search(searchParams) {
       this.api.q = searchParams.join('+');
       const {
