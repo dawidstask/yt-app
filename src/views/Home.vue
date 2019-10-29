@@ -44,7 +44,7 @@ export default {
         order: 'viewCount',
         maxResults: 10,
         q: '',
-        key: 'AIzaSyC2Wa9Q5QCOHiL-aZ5yBn6CNVorYkJzXFg',
+        key: process.env.VUE_APP_YOUTUBE_API_KEY,
         prevPageToken: '',
         nextPageToken: '',
       },
