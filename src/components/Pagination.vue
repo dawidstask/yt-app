@@ -20,22 +20,22 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'Pagination',
-  props: {
-    prevPageToken: {
-      type: String,
-    },
-    nextPageToken: {
-      type: String,
-    },
+  computed: {
+    ...mapGetters({
+      prevPageToken: 'prevPageToken',
+      nextPageToken: 'nextPageToken',
+    }),
   },
   methods: {
     prevPage() {
-      this.$emit('prev-page');
+      this.$store.dispatch('loadPrevVideos');
     },
     nextPage() {
-      this.$emit('next-page');
+      this.$store.dispatch('loadNextVideos');
     },
   },
 };

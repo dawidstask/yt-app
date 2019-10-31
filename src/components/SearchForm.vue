@@ -38,7 +38,8 @@ export default {
   methods: {
     parseSearchString() {
       const searchParams = this.searchString.trim().split(/\s+/);
-      this.$emit('search', searchParams);
+      this.$store.commit('SET_QUERY', searchParams);
+      this.$store.dispatch('loadVideos', searchParams);
     },
     reset() {
       this.searchString = '';

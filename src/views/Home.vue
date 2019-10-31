@@ -3,23 +3,26 @@
 <!--    <img alt="Vue logo" src="../assets/logo.png">-->
 
     <Header/>
-    <SearchForm @search="search"/>
+    <SearchForm />
     <SearchResults
       v-if="videos.length"
       :videos="videos"
     />
+<!--    <Pagination-->
+<!--      v-if="videos.length"-->
+<!--      :prevPageToken="prevPageToken"-->
+<!--      :nextPageToken="nextPageToken"-->
+<!--      @prev-page="prevPage"-->
+<!--      @next-page="nextPage"-->
+<!--    />-->
     <Pagination
       v-if="videos.length"
-      :prevPageToken="api.prevPageToken"
-      :nextPageToken="api.nextPageToken"
-      @prev-page="prevPage"
-      @next-page="nextPage"
     />
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import { mapGetters } from 'vuex';
 import Header from '@/components/Header.vue';
 import SearchForm from '@/components/SearchForm.vue';
 import SearchResults from '@/components/SearchResults.vue';
@@ -33,66 +36,34 @@ export default {
     SearchResults,
     Pagination,
   },
-  data() {
-    return {
-      videos: [],
-      searchValue: '',
-      api: {
-        baseUrl: 'https://www.googleapis.com/youtube/v3/search?',
-        part: 'snippet',
-        type: 'video',
-        order: 'viewCount',
-        maxResults: 10,
-        q: '',
-        key: process.env.VUE_APP_YOUTUBE_API_KEY,
-        prevPageToken: '',
-        nextPageToken: '',
-      },
-    };
+  computed: {
+    ...mapGetters({
+      apiUrl: 'apiUrl',
+      videos: 'videos',
+      // prevPageToken: 'prevPageToken',
+      // nextPageToken: 'nextPageToken',
+    }),
   },
-  created() {
-    this.firstSearch();
+  mounted() {
+    this.$store.dispatch('loadVideos');
   },
   methods: {
-    firstSearch() {
-      const {
-        baseUrl, part, type, order, maxResults, key,
-      } = this.api;
-      const apiUrl = `${baseUrl}part=${part}&type=${type}&order=${order}&maxResults=${maxResults}&key=${key}`;
-      this.getData(apiUrl);
-    },
-    search(searchParams) {
-      this.api.q = searchParams.join('+');
-      const {
-        baseUrl, part, type, order, maxResults, q, key,
-      } = this.api;
-      const apiUrl = `${baseUrl}part=${part}&type=${type}&order=${order}&q=${q}&maxResults=${maxResults}&key=${key}`;
-      this.getData(apiUrl);
-    },
-    prevPage() {
-      const {
-        baseUrl, part, type, order, maxResults, q, key, prevPageToken,
-      } = this.api;
-      const apiUrl = `${baseUrl}part=${part}&type=${type}&order=${order}&q=${q}&maxResults=${maxResults}&key=${key}&pageToken=${prevPageToken}`;
-      this.getData(apiUrl);
-    },
-    nextPage() {
-      const {
-        baseUrl, part, type, order, maxResults, q, key, nextPageToken,
-      } = this.api;
-      const apiUrl = `${baseUrl}part=${part}&type=${type}&order=${order}&q=${q}&maxResults=${maxResults}&key=${key}&pageToken=${nextPageToken}`;
-      this.getData(apiUrl);
-    },
-    getData(apiUrl) {
-      axios
-        .get(apiUrl)
-        .then((res) => {
-          this.videos = res.data.items;
-          this.api.prevPageToken = res.data.prevPageToken;
-          this.api.nextPageToken = res.data.nextPageToken;
-        })
-        .catch(error => console.log(error));
-    },
+    // prevPage() {
+    //   const {
+    //     baseUrl, part, type, order, maxResults, q, key, prevPageToken,
+    //   } = this.api;
+    //   const apiUrl = `${baseUrl}part=${part}&type=${type}&order=${order}&q=${q}&maxResults=
+    //   ${maxResults}&key=${key}&pageToken=${prevPageToken}`;
+    //   this.getData(apiUrl);
+    // },
+    // nextPage() {
+    // const {
+    //   baseUrl, part, type, order, maxResults, q, key, nextPageToken,
+    // } = this.api;
+    // const apiUrl = `${baseUrl}part=${part}&type=${type}&order=${order}&q=${q}&maxResults=
+    // ${maxResults}&key=${key}&pageToken=${nextPageToken}`;
+    // this.getData(apiUrl);
+    // },
   },
 };
 </script>
