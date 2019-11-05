@@ -32,10 +32,12 @@ export default {
   },
   methods: {
     prevPage() {
-      this.$store.dispatch('loadPrevVideos');
+      const { prevPageToken } = this;
+      this.$store.dispatch('loadVideos', { prevPageToken });
     },
     nextPage() {
-      this.$store.dispatch('loadNextVideos');
+      const { nextPageToken } = this;
+      this.$store.dispatch('loadVideos', { nextPageToken });
     },
   },
 };
