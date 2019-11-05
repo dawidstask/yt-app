@@ -1,8 +1,6 @@
 <template>
   <header>
-    <a href="#">
-      <span>YouTube Search</span>
-    </a>
+    <span>YouTube Search</span>
   </header>
 </template>
 
