@@ -1,21 +1,18 @@
 <template>
   <div>
+    <span @click="goBack">&#8592; back</span>
     <p>
       <YoutubeVideo :id="this.$route.params.id" />
     </p>
-    <button type="button" @click="goBack">back</button>
-<!--    <Pagination />-->
   </div>
 </template>
 
 <script>
-// import Pagination from '@/components/Pagination.vue';
 import YoutubeVideo from '@/components/YoutubeVideo.vue';
 
 export default {
   name: 'Video',
   components: {
-    // Pagination,
     YoutubeVideo,
   },
   methods: {
@@ -26,5 +23,11 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="stylus" scoped>
+  div
+    display: flex
+    flex-direction: column
+    justify-content: center
+  span
+    cursor: pointer
 </style>
