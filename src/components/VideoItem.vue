@@ -1,10 +1,8 @@
 <template>
-  <div>
-    <router-link :to="{ name: 'video', params: { id: video.id.videoId }}">
-      <p>{{ video.snippet.title }}</p>
-      <img :src="video.snippet.thumbnails.medium.url" :alt="video.snippet.title">
-    </router-link>
-  </div>
+  <router-link tag="div" :to="{ name: 'video', params: { id: video.id.videoId }}">
+    <p>{{ video.snippet.title }}</p>
+    <img :src="video.snippet.thumbnails.medium.url" :alt="video.snippet.title">
+  </router-link>
 </template>
 
 <script>
@@ -24,11 +22,12 @@ export default {
     height: 100%
     display: flex
     flex-direction: column
-    justify-content space-between
+    cursor: pointer
   p
     font-size: 1em
     font-weight: bold
     margin: 0
   img
     align-self: center
+    margin-top: auto
 </style>
