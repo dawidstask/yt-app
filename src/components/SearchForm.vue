@@ -30,6 +30,14 @@
 <script>
 export default {
   name: 'SearchForm',
+  watch: {
+    '$route.query.term'(newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.searchString = this.$route.query.term;
+        this.parseSearchString();
+      }
+    },
+  },
   data() {
     return {
       searchString: '',
@@ -40,6 +48,7 @@ export default {
       const searchValue = this.searchString.trim().split(/\s+/);
       this.$store.commit('SET_SEARCH_VALUE', searchValue);
       this.$store.dispatch('loadVideos', { q: searchValue });
+      this.$router.push({ path: '/', query: { term: this.searchString } });
     },
     reset() {
       this.searchString = '';
